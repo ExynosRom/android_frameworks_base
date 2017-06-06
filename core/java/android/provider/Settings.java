@@ -3708,6 +3708,13 @@ public final class Settings {
           * @hide
           */
          public static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+		 
+		 /** Alternative recent apps integration using OmniSwitch
+          * @hide
+          */
+          public static final String RECENTS_USE_OMNISWITCH = "recents_use_omniswitch";
+ 
+         /**
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
