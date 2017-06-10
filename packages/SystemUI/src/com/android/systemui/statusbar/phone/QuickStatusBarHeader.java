@@ -74,8 +74,6 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
 
     private TextView mAlarmStatus;
     private View mAlarmStatusCollapsed;
-	private View mClock;
-    private View mDate;
 
     private QSPanel mQsPanel;
 
@@ -130,11 +128,6 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
         mDateTimeGroup.setPivotX(0);
         mDateTimeGroup.setPivotY(0);
         mDateTimeTranslation = getResources().getDimension(R.dimen.qs_date_time_translation);
-		mClock = findViewById(R.id.clock);
-        mClock.setOnClickListener(this);
-        mDate = findViewById(R.id.date);
-        mDate.setOnClickListener(this);
- 
         mShowFullAlarm = getResources().getBoolean(R.bool.quick_settings_show_full_alarm);
 
         mClock = (View) findViewById(R.id.clock);
@@ -383,10 +376,6 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
             startClockActivity(null);
         } else if (v == mDate) {
             startDateActivity();
-		} else if (v == mClock) {
-            startAlarmsActivity();
-        } else if (v == mDate) {
-            startCalendarActivity();
         }
     }
 
@@ -414,18 +403,7 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
         mActivityStarter.startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS),
                 true /* dismissShade */);
     }
-	
-	private void startCalendarActivity() {
-         Intent calIntent = new Intent(Intent.ACTION_MAIN);
-         calIntent.addCategory(Intent.CATEGORY_APP_CALENDAR);
-         mActivityStarter.startActivity(calIntent, true /* dismissShade */);
-     }
- 
-     private void startAlarmsActivity() {
-         mActivityStarter.startActivity(new Intent(android.provider.AlarmClock.ACTION_SHOW_ALARMS),
-                 true /* dismissShade */);
-     }
- 
+
     @Override
     public void setNextAlarmController(NextAlarmController nextAlarmController) {
         mNextAlarmController = nextAlarmController;
